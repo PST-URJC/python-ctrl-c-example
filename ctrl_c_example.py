@@ -1,19 +1,19 @@
 import threading
 import time
 
-hilos_ejecutando = True
+HILOS_EJECUTANDO = True
 
-def hilo():   
-    while hilos_ejecutando:
+def hilo():
+    while HILOS_EJECUTANDO:
         print("ejecutando bucle hilo()")
         time.sleep(1)
 
-def hilo2():   
-    while hilos_ejecutando:
+def hilo2():
+    while HILOS_EJECUTANDO:
         print("ejecutando bucle hilo2()")
         time.sleep(2)
 
-        
+
 if __name__ == "__main__":
     x = threading.Thread(target=hilo, args=())
     y = threading.Thread(target=hilo2, args=())
@@ -24,7 +24,7 @@ if __name__ == "__main__":
         x.join()
         y.join()
     except KeyboardInterrupt:
-        hilos_ejecutando = False
+        HILOS_EJECUTANDO = False
         x.join()
         y.join()
         print("final de los hilos detectado")
